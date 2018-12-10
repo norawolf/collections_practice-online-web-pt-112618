@@ -5,13 +5,27 @@ def sort_array_asc(array)
 end
 
 def sort_array_desc(array)
-  array.sort.reverse
+  array.sort do |a, b|
+    b <=> a
+  end
 end
 
+# shortcut method
+# def sort_array_desc(array)
+#   array.sort.reverse
+# end
+
+# original attempt
+# def sort_array_char_count(array)
+#   array.sort {|a, b| a.length <=> b.length}
+# end
+
+#refactoring
 def sort_array_char_count(array)
-  array.sort {|a, b| a.length <=> b.length}
+  array.sort_by {|string| string.length}
 end
 
+# this is called parallel assignment
 def swap_elements(array)
    array[1], array[2] = array[2], array[1]
    array
@@ -22,12 +36,8 @@ def reverse_array(array)
 end
 
 def kesha_maker(array)
-  changed_array = []
-  array.each do |word|
-    word[2] = "$"
-    changed_array << word
-  end
-  changed_array
+  array.map{|word| word[2] = "$"}
+  array
 end
 
 def find_a(array)
