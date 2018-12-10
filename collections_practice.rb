@@ -36,9 +36,8 @@ def reverse_array(array)
 end
 
 def kesha_maker(array)
-  array.map{|word| word[2] = "$"}
-  array
-end
+  array.each{|word| word[2] = "$"}
+  end
 
 def find_a(array)
   array.select {|word| word.start_with?("a")}
